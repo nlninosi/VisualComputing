@@ -3,13 +3,10 @@ headless: true
 ---
 
 - **Shortcodes**
-- [p5]({{< relref "/docs/shortcodes/p5" >}})
-- [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
-- [Columns]({{< relref "/docs/shortcodes/columns" >}})
-- [Expand]({{< relref "/docs/shortcodes/expand" >}})
-- [Hints]({{< relref "/docs/shortcodes/hints" >}})
-- [Katex]({{< relref "/docs/shortcodes/katex" >}})
-- [Mermaid]({{< relref "/docs/shortcodes/mermaid" >}})
-- [Tabs]({{< relref "/docs/shortcodes/tabs" >}})
-- [Illusions]({{< relref "/docs/shortcodes/illusions" >}})
+- [Illusions]({{< relref "/docs/shortcodes/Illusions" >}})
+- [Coloring]({{< relref "/docs/shortcodes/Coloring" >}})
+- [Machband]({{< relref "/docs/shortcodes/Machband" >}})
+- [Masking]({{< relref "/docs/shortcodes/Masking" >}})
+- [Coherence]({{< relref "/docs/shortcodes/Coherence" >}})
+- [Depth_perception]({{< relref "/docs/shortcodes/Depth_perception" >}})
 <br />
