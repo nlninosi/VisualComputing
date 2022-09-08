@@ -217,7 +217,7 @@ Esta implementación de convolución la realizamos de forma secuencial, acá pod
 {{< p5-div sketch="/showcase/sketches/hardwareConvolution.js" >}}
 {{< /tab >}}
 
-{{< tab "Implementación de filtro THRESHOLD" >}} 
+{{< tab "Implementación de filtro threshold" >}} 
 
 {{< p5-div sketch="/showcase/sketches/THRESHOLD.js" >}}
 {{< /tab >}}
