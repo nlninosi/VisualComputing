@@ -65,6 +65,7 @@ new p5((p) => {
 
 El resultado de este codigo se puede ver aqui abajo:
 
+
 {{< p5-div sketch="/showcase/sketches/cafewall.js" >}}
 
 
