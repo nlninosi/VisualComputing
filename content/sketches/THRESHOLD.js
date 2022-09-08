@@ -1,6 +1,5 @@
 new p5((p) => {
     let img;
-    let input;
 
     p.setup = function () {
         p.createCanvas(700, 500);
@@ -11,7 +10,7 @@ new p5((p) => {
     p.draw = function () {
         p.image(img, 0, 0);
         img.resize(700, 500);
-        img.filter(p.GRAY);
+        img.filter(p.THRESHOLD);
     }
 
-}, "hardwareConvolution");
+}, "THRESHOLD");

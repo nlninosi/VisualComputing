@@ -1,4 +1,4 @@
-# Masking
+<!-- # Convolution
 
 ## Definition of convolution
 
@@ -191,7 +191,7 @@ Podemos concluir que la aplicación de una máscara a través de la implementaci
 
 En futuros trabajos se puede indagar que tan factible es una implementación paralela de esta función mediante p5.js, sin necesidad de entrar directamente a codificar a bajo nivel con lenguajes como c++ y haciendo uso de CUDA.
 <!-- 
-{{< p5-div sketch="../../../sketches/scintillating.js" >}} -->
+{{< p5-div sketch="../../../sketches/scintillating.js" >}} 
 
 Texto previo descriptivo muy tramador de convolución.
 
@@ -200,7 +200,7 @@ Texto previo descriptivo muy tramador de convolución.
 {{< tab "Imagen base" >}} 
 
 # Imagen sin aplicar efecto
-Esta es la imagen sin aplicar ningún efecto, tan solo se redimensionó para efectos de visualización. 
+Esta es la imagen sin aplicar ningún efecto, tan solo se redimensionó para efectos de visualización.
 
 ![IMAGEN](/showcase/assets/1.jpg)
 {{< /tab >}}
@@ -212,14 +212,14 @@ Esta implementación de convolución la realizamos de forma secuencial, acá pod
 {{< p5-div sketch="/showcase/sketches/softwareConvolution.js" >}}
 {{< /tab >}}
 
-{{< tab "Implementación de filtro gray" >}} 
+{{< tab "Histograma" >}} 
+# Uso de función creada por el estudiante
+Esta implementación de convolución la realizamos de forma secuencial, acá podemos apreciar que con los valores ingresados, el efecto es mucho más notorio, y por lo tanto, es más versátil para permitir graduar acorde el contexto que tan intenso es el efecto. xxx
 
-{{< p5-div sketch="/showcase/sketches/hardwareConvolution.js" >}}
+
+
 {{< /tab >}}
+{{< /tabs >}} -->
+# Histograma
 
-{{< tab "Implementación de filtro THRESHOLD" >}} 
-
-{{< p5-div sketch="/showcase/sketches/THRESHOLD.js" >}}
-{{< /tab >}}
-
-{{< /tabs >}}
+{{< p5-iframe sketch="/showcase/sketches/histograma.js" width="1000" height="1300" >}}
