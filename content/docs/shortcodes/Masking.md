@@ -1,18 +1,14 @@
 # Masking
 
-## Definition of convolution
+## Definición del problema
 
-## Implementation of convolution
-Dado un archivo de imagen, se le debe realizar un enmascaramiento visual, que resulte en la aplicación de un efecto mediante el uso de máscaras de convolución.
+
 
 ## Sustento teórico
 
-## Procesamiento de imágenes
-Debemos empezar definiendo una imagen digital como una función bidimensional donde se tiene un número finito de elementos llamados píxeles, cada uno de ellos teniendo una localización y valor definidos.
+## Que es el Masking?
 
-Con esto en mente podemos definir el procesamiento de imágenes como el reconocimiento de imágenes 2D, 3D y secuencias de imágenes, análisis, manipulación, transmisión y otras áreas relacionadas, todas ellas haciendo uso de un algoritmo preestablecido. Dentro de las áreas que abarca esta área nos interesa la del procesamiento del color.
-
-Fuente: [Procesamiento de imágenes digitales](http://alojamientos.us.es/gtocoma/pid/introduccion.html)
+Uno de los procedimientos experimentales más destacados para manipular la conciencia es el enmascaramiento visual, en el que se disminuye la visibilidad de un estímulo objetivo presentándolo en estrecha proximidad espacial y temporal con una denominada "máscara". Por ejemplo, si se presenta una imagen objetivo solamente durante períodos breves, normalmente se puede percibir sin esfuerzo. Sin embargo, si la imagen objetivo breve es seguida inmediatamente por una segunda imagen consistente en una disposición de líneas y patrones aleatorios, su visibilidad se reduce considerablemente. Este fenómeno se conoce como enmascaramiento hacia atrás y la imagen de la máscara se conoce como máscara de patrón. El enmascaramiento visual se ha utilizado con frecuencia para estudiar los correlatos neurales de la conciencia. El enmascaramiento visual que implica tanto factores espaciales (patrones o formas) como temporales (duraciones de los patrones e intervalos entre estímulos) suele dividirse en dos tipos, en función de las relaciones espaciales que existen entre los contornos de los patrones objetivo y los de la máscara. El enmascaramiento que implica la superposición espacial de contornos (aunque estos contornos puedan estar separados en el tiempo) se denomina comúnmente enmascaramiento de patrones. 
 
 ### ¿Qué es una máscara de convolución?
 
@@ -64,31 +60,11 @@ y_{n1} & y_{n3} & \cdots & y_{mn}\\
 \sum_{i=0}^{m-1}\sum_{i=0}^{n-1}x_{(m-i)(n-j)} \cdot y_{(1-i)(1-j)}
 {{< /katex >}}
 
-### Difuminado gaussiano
 
-Mediante la implementación de la convolución podemos aplicar efectos a la imagen digital objetivo, en esta ocasión hemos decidido aplicar el difuminado gaussiano. En esta caso, como manejamos dos dimensiones en las operaciones, la formula se describe de la siguiente forma:
-
-{{< katex display >}}
-G(x, y) = \dfrac{1}{\sqrt{2 \pi \sigma}}\exp(-\dfrac{x^2 + y^2}{2 \sigma^2})
-{{< /katex >}}
-
-Esto nos permite generar un kernel que aplica de forma más eficiente el efecto a causa de los valores más exactos. Por ejemplo:
-
-{{< katex display >}}
-\begin{bmatrix}
-0.00296902 & 0.0133062 & 0.0219382 & 0.0133062 & 0.00296902 \\
-0.0133062 & 0.0596343 & 0.0983203  & 0.0596343 & 0.0133062 \\        
-0.0219382 & 0.0983203  & 0.162103  & 0.0983203 & 0.0219382 \\ 
-0.0133062 & 0.0596343  & 0.0983203 & 0.0596343 & 0.0133062 \\   
-0.00296902 & 0.0133062 & 0.0219382 & 0.0133062 & 0.00296902 \\
-\end{bmatrix}
-{{< /katex >}}
-
-Fuente: [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur)
 
 ## Implementación de la convolución
 
-Empezamos por revisar la función que genera el kernel gaussiano, la cual recibe un tamaño del kernel, un sigma y una constante multiplicativa {{< katex >}}k{{< /katex >}}. En esta ocasión los valores serán de 11, 11 y 1 respectivamente. La función se basa en esta [implementación](https://www.geeksforgeeks.org/gaussian-filter-generation-c/).
+Vamos a explicar la implementacion con el filtro de difumindao gaussiano. Empezamos por revisar la función que genera el kernel, la cual recibe un tamaño del kernel, un sigma y una constante multiplicativa {{< katex >}}k{{< /katex >}}. En esta ocasión los valores serán de 11, 11 y 1 respectivamente. La función se basa en esta [implementación](https://www.geeksforgeeks.org/gaussian-filter-generation-c/).
 
 {{< expand >}}
 ```js
@@ -185,15 +161,9 @@ function convolution(x, y, matrix, img) {
 ```
 {{< /expand >}}
 
-### Conclusiones y trabajo futuro
 
-Podemos concluir que la aplicación de una máscara a través de la implementación de una convolución sobre una imagen digital es realizable, fácil de comprender matemáticamente, pero que es posible que requiera de una implementación paralela para poder obtener valores de forma más rápida. También es importante recalcar que si la imagen posee una alta calidad, el efecto del difuminado no se aplica del todo bien, lo que nos deja con ventaja en la implementación manual de la convolución al poder graduar por medio de los valores del efecto
-
-En futuros trabajos se puede indagar que tan factible es una implementación paralela de esta función mediante p5.js, sin necesidad de entrar directamente a codificar a bajo nivel con lenguajes como c++ y haciendo uso de CUDA.
 <!-- 
 {{< p5-div sketch="../../../sketches/scintillating.js" >}} -->
-
-Texto previo descriptivo muy tramador de convolución.
 
 {{< tabs "convolution" >}}
 
@@ -206,8 +176,6 @@ Esta es la imagen sin aplicar ningún efecto, tan solo se redimensionó para efe
 {{< /tab >}}
 
 {{< tab "Implementación de filtro blur" >}} 
-# Uso de función creada por el estudiante
-Esta implementación de convolución la realizamos de forma secuencial, acá podemos apreciar que con los valores ingresados, el efecto es mucho más notorio, y por lo tanto, es más versátil para permitir graduar acorde el contexto que tan intenso es el efecto.
 
 {{< p5-div sketch="/showcase/sketches/softwareConvolution.js" >}}
 {{< /tab >}}
@@ -223,3 +191,9 @@ Esta implementación de convolución la realizamos de forma secuencial, acá pod
 {{< /tab >}}
 
 {{< /tabs >}}
+
+### Conclusiones y trabajo futuro
+
+Como conclusión podemos ver la utilidad que tienen la herramienta de masking para la edición de imágenes y video, también pudimos ver la relevancia de los histogramas, pues estos son de gran utilidad. Tambien podemos concluir que la aplicación de una máscara a través de la implementación de una convolución sobre una imagen digital es realizable, fácil de comprender matemáticamente, pero que es posible que requiera de una implementación paralela para poder obtener valores de forma más rápida. También es importante recalcar que si la imagen posee una alta calidad, el efecto del difuminado no se aplica del todo bien, lo que nos deja con ventaja en la implementación manual de la convolución al poder graduar por medio de los valores del efecto
+
+En futuros trabajos se puede indagar que tan factible es una implementación paralela de esta función mediante p5.js, sin necesidad de entrar directamente a codificar a bajo nivel con lenguajes como c++ y haciendo uso de CUDA.
