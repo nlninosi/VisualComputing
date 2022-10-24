@@ -1,11 +1,18 @@
 const fireworks = []
-let gravity;
-let checkbox;
+let gravity
+let slider
+let checkbox
+
 function setup() {
-    createCanvas(750,690, WEBGL)
+    createCanvas(600,600, WEBGL)
     colorMode(HSL)
+
     gravity = createVector(0, 0.2, 0);
-    checkbox = createCheckbox('label', false);
+
+    slider = createSlider(1, 255, 100);
+    slider.position(10, 10);
+    slider.style('width', '100px');
+    checkbox = createCheckbox('Iluminacion', true);
     //checkbox.changed(myCheckedEvent);
 }
 
@@ -114,11 +121,12 @@ class Firework {
   }
 
   explode() {
-    for (let i = 0; i < 100; i++) {
+    var h = 18*random (0,20)
+    var s = 100
+    var l = 50
+    for (let i = 0; i < slider.value(); i++) {
       var pos = createVector(this.firework.pos.x, this.firework.pos.y,this.firework.pos.z)
-      var h = random(360)
-      var s = 100
-      var l = 50
+      h += random (-15,15)
       var a = color(h, s, l)
       const p = new Particle( pos, a, false);
       this.particles.push(p);
