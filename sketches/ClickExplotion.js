@@ -4,39 +4,31 @@ let checkbox
 
 function setup() {
     createCanvas(600,600, WEBGL)
-    angleMode(DEGREES)
-
     slider = createSlider(1, 255, 100);
     slider.position(10, 10);
     slider.style('width', '100px');
     checkbox = createCheckbox('Iluminacion', true);
+    
 }
 
 function draw() {
-    background(0,0,30)
-
-    rotateX(sin(frameCount / 6) * 360)
-    rotateY(cos(frameCount / 6) * 360)
-
-    translate(0, 0, sin(frameCount) * 100)
-
+    background(240,100,10)
+    colorMode(HSL)
     if (checkbox.checked()) {
-        directionalLight([255], createVector(0, 0, -1))
+      directionalLight([255], createVector(0, 0, -1))
     }
-
-    if (random(1) > 0.97) {
-
-        var x = random(-100, 100)
-        var y = random(-100, 100)
-        var z = random(-100, 100)
-
+    if ((mouseIsPressed === true)&&(mouseButton === LEFT)) {
+        
+        var x = mouseX-width/2
+        var y = mouseY-height/2
+        var z = random(-100,100)
         var pos = createVector(x, y, z)
-
+        var r = 20*random (0,18)
+        var g = 100
+        var b = 50
+       
         for(var i = 0; i < slider.value(); i++) {
-
-            var r = map(sin(frameCount),-1,1,0,255) + random (-50,50)
-            var g = map(sin(frameCount / 2),-1,1,255,0) + random(-50,50)
-            var b = map(cos(frameCount / 4),-1,1,0,255) + random(-50,50)
+            r += random (-15,15)
             var c = color(r, g, b)
             var p = new Particle(pos,c)
             particles.push(p)
