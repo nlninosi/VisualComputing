@@ -1,20 +1,24 @@
-let particlestest = []
 const fireworks = []
-let test=[]
 let gravity;
-
+let checkbox;
 function setup() {
     createCanvas(750,690, WEBGL)
-    angleMode(DEGREES)
+    colorMode(HSL)
     gravity = createVector(0, 0.2, 0);
+    checkbox = createCheckbox('label', false);
+    //checkbox.changed(myCheckedEvent);
 }
 
 function draw() {
-    background(0,0,30)
-    directionalLight([255], createVector(0, 0, -1))
+    background(240,100,10)
+    orbitControl();
+    if (checkbox.checked()) {
+      directionalLight([255], createVector(0, 0, -1))
+    }
     if (random(1) < 0.02) {
       fireworks.push(new Firework());
     }
+    
   
     for (let i = fireworks.length - 1; i >= 0; i--) {
       fireworks[i].update();
@@ -68,10 +72,10 @@ class Particle {
 
 class Firework {
   constructor() {
-    var r = 255
-    var g = 255
-    var b = 255
-    this.c = color(r, g, b)
+    var h = 60
+    var s = 100
+    var l = 100
+    this.c = color(h, s, l)
     var x = random(-150, 150)
     var y = 250
     var z = random(-100,100)
@@ -112,11 +116,11 @@ class Firework {
   explode() {
     for (let i = 0; i < 100; i++) {
       var pos = createVector(this.firework.pos.x, this.firework.pos.y,this.firework.pos.z)
-      var r = map(sin(frameCount),-1,1,0,255) + random (-50,50)
-      var g = map(sin(frameCount / 2),-1,1,255,0) + random(-50,50)
-      var b = map(cos(frameCount / 4),-1,1,0,255) + random(-50,50)
-      var r = color(r, g, b)
-      const p = new Particle( pos, r, false);
+      var h = random(360)
+      var s = 100
+      var l = 50
+      var a = color(h, s, l)
+      const p = new Particle( pos, a, false);
       this.particles.push(p);
     }
   }
