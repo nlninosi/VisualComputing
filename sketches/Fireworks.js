@@ -37,7 +37,7 @@ function draw() {
     }
 }
 
-class Particle {
+class ParticleF {
     constructor(pos, c, firework) {
         this.pos = createVector(pos.x, pos.y, pos.z)
         this.acc = createVector(0, 0, 0)
@@ -87,7 +87,7 @@ class Firework {
     var y = 250
     var z = random(-100,100)
     var pos = createVector(x, y, z)
-    this.firework = new Particle(pos, this.c, true);
+    this.firework = new ParticleF(pos, this.c, true);
     this.exploded = false;
     this.particles = [];
   }
@@ -128,7 +128,7 @@ class Firework {
       var pos = createVector(this.firework.pos.x, this.firework.pos.y,this.firework.pos.z)
       h += random (-15,15)
       var a = color(h, s, l)
-      const p = new Particle( pos, a, false);
+      const p = new ParticleF( pos, a, false);
       this.particles.push(p);
     }
   }
