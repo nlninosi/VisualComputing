@@ -66,9 +66,13 @@ function draw() {
     colorMode(RGB)
     background(0,0,30)
 
-    rotateX(sin(frameCount / 6) * 360)
-    rotateY(cos(frameCount / 6) * 360)
-
+    //rotateX(sin(frameCount / 6) * 360)
+    //rotateY(cos(frameCount / 6) * 360)
+    if (mouseIsPressed === true) {
+      rotateX(mouseY)
+      rotateY(mouseX)
+    }
+    
     translate(0, 0, sin(frameCount) * 100)
 
     if (checkbox.checked()) {
