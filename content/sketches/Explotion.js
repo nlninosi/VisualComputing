@@ -16,10 +16,16 @@ function draw() {
     
     background(0,0,30)
 
-    rotateX(sin(frameCount / 6) * 360)
-    rotateY(cos(frameCount / 6) * 360)
+    //rotateX(sin(frameCount / 6) * 360)
+    //rotateY(cos(frameCount / 6) * 360)
+    if (mouseIsPressed === true) {
+        rotateX(mouseY)
+        rotateY(mouseX)
+    }
+    //rotateX(mouseY)
+    //rotateY(mouseX)
 
-    translate(0, 0, sin(frameCount) * 100)
+    //translate(0, 0, sin(frameCount) * 100)
 
     if (checkbox.checked()) {
         directionalLight([255], createVector(0, 0, -1))
@@ -45,7 +51,7 @@ function draw() {
     }
 
     for (var i = particles.length -1 ; i >= 0; i--) {
-        if (dist(particles[i].pos.x,particles[i].pos.y,particles[i].pos.z,0,0,0) < 500) {
+        if (dist(particles[i].pos.x,particles[i].pos.y,particles[i].pos.z,0,0,0) < 200) {
             particles[i].update()
             particles[i].show()
         } else {
@@ -54,10 +60,14 @@ function draw() {
     }
 }
 
+function mouseClicked() {
+    
+}
+
 class Particle {
     constructor(pos,c) {
         this.pos = createVector(pos.x, pos.y, pos.z)
-        this.vel = p5.Vector.random3D().normalize().mult(random(4,6))
+        this.vel = p5.Vector.random3D().normalize().mult(random(2,4))
         this.c = c
         this.w = random(4,10)
     }
