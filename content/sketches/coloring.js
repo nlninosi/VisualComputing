@@ -20,7 +20,7 @@ function setup() {
     // shaders require WEBGL mode to work
     createCanvas(380, 380, WEBGL);
     //background(0);
-    shader(colorShader);
+    //shader(colorShader);
     // https://p5js.org/reference/#/p5/shader
 
 }
@@ -32,8 +32,8 @@ function draw() {
     //shader(colorShader);
     //rect(0,0,50, 50);
     background(0);
-    colorShader.setUniform('uMaterial1', '(255,165,71,0.75)');
-    colorShader.setUniform('uMaterial2', '(238,130,238,0.75)');
+    colorShader.setUniform('uMaterial1', [1,0,0,1]);
+    colorShader.setUniform('uMaterial2', [0,1,0,1]);
     // the fill command is used to define the colors
     //(to be interpolated) in a per-vertex basis
     beginShape();
