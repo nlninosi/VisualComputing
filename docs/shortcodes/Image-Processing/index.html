@@ -1,0 +1,279 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Que es el Masking? # Uno de los procedimientos experimentales más destacados para manipular la conciencia es el enmascaramiento visual, en el que se disminuye la visibilidad de un estímulo objetivo presentándolo en estrecha proximidad espacial y temporal con una denominada &ldquo;máscara&rdquo;. Por ejemplo, si se presenta una imagen objetivo solamente durante períodos breves, normalmente se puede percibir sin esfuerzo. Sin embargo, si la imagen objetivo breve es seguida inmediatamente por una segunda imagen consistente en una disposición de líneas y patrones aleatorios, su visibilidad se reduce considerablemente."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Que es el Masking? # Uno de los procedimientos experimentales más destacados para manipular la conciencia es el enmascaramiento visual, en el que se disminuye la visibilidad de un estímulo objetivo presentándolo en estrecha proximidad espacial y temporal con una denominada &ldquo;máscara&rdquo;. Por ejemplo, si se presenta una imagen objetivo solamente durante períodos breves, normalmente se puede percibir sin esfuerzo. Sin embargo, si la imagen objetivo breve es seguida inmediatamente por una segunda imagen consistente en una disposición de líneas y patrones aleatorios, su visibilidad se reduce considerablemente."><meta property="og:type" content="article"><meta property="og:url" content="https://nlninosi.github.io/showcase/docs/shortcodes/Image-Processing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-11-28T14:25:25-05:00"><title>Image Processing | Presentación</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+<script defer src=/showcase/en.search.min.0bf99197256772a566fd8ee7a96c6f25b5fa99daedd5c9c387c71499338dca7e.js integrity="sha256-C/mRlyVncqVm/Y7nqWxvJbX6mdrt1cnDh8cUmTONyn4=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Presentación</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>Shortcodes</span><ul><li><a href=/showcase/docs/shortcodes/3D/>3 D</a></li><li><a href=/showcase/docs/shortcodes/coloring/>Coloring</a></li><li><a href=/showcase/docs/shortcodes/Flower3d/>Flower3d</a></li><li><a href=/showcase/docs/shortcodes/Histogram/>Histogram</a></li><li><a href=/showcase/docs/shortcodes/illusions/>Illusions</a></li><li><a href=/showcase/docs/shortcodes/Image-Processing/ class=active>Image Processing</a></li><li><a href=/showcase/docs/shortcodes/Masking/>Masking</a></li></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Image Processing</strong>
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#que-es-el-masking>Que es el Masking?</a><ul><li><a href=#qué-es-una-máscara-de-convolución>¿Qué es una máscara de convolución?</a></li></ul></li></ul></li><li><a href=#imagen-sin-aplicar-efecto>Imagen sin aplicar efecto</a><ul><li><a href=#image-processing>Image Processing</a></li><li><a href=#maskfrag>mask.frag</a></li><li><a href=#imagejs>image.js</a></li><li><a href=#videojs>video.js</a></li><li><a href=#conclusiones>Conclusiones</a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=que-es-el-masking>Que es el Masking?
+<a class=anchor href=#que-es-el-masking>#</a></h2><p>Uno de los procedimientos experimentales más destacados para manipular la conciencia es el enmascaramiento visual, en el que se disminuye la visibilidad de un estímulo objetivo presentándolo en estrecha proximidad espacial y temporal con una denominada &ldquo;máscara&rdquo;. Por ejemplo, si se presenta una imagen objetivo solamente durante períodos breves, normalmente se puede percibir sin esfuerzo. Sin embargo, si la imagen objetivo breve es seguida inmediatamente por una segunda imagen consistente en una disposición de líneas y patrones aleatorios, su visibilidad se reduce considerablemente. Este fenómeno se conoce como enmascaramiento hacia atrás y la imagen de la máscara se conoce como máscara de patrón. El enmascaramiento visual se ha utilizado con frecuencia para estudiar los correlatos neurales de la conciencia. El enmascaramiento visual que implica tanto factores espaciales (patrones o formas) como temporales (duraciones de los patrones e intervalos entre estímulos) suele dividirse en dos tipos, en función de las relaciones espaciales que existen entre los contornos de los patrones objetivo y los de la máscara. El enmascaramiento que implica la superposición espacial de contornos (aunque estos contornos puedan estar separados en el tiempo) se denomina comúnmente enmascaramiento de patrones.</p><h3 id=qué-es-una-máscara-de-convolución>¿Qué es una máscara de convolución?
+<a class=anchor href=#qu%c3%a9-es-una-m%c3%a1scara-de-convoluci%c3%b3n>#</a></h3><p>Con el fin de realizar un procesamiento del color que poseen las imágenes digitales, se hace uso de la convolución. Esta se define como el proceso de añadir cada elemento de la imagen a sus vecinos locales, luego de ser operados por un kernel. Esta operación no es una operación corriente de multiplicación de matrices, sino que se define de la siguiente manera:</p><link rel=stylesheet href=/showcase/katex/katex.min.css><script defer src=/showcase/katex/katex.min.js></script>
+<script defer src=/showcase/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><span>
+\[(\begin{bmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i\\
+\end{bmatrix}
+*
+\begin{bmatrix}
+1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 9\\
+\end{bmatrix})
+[2, 2] =
+(i \cdot 1) +
+(h \cdot 2) +
+(g \cdot 3) +
+(f \cdot 4) +
+(e \cdot 5) +
+(d \cdot 6) +
+(c \cdot 7) +
+(b \cdot 8) +
+(a \cdot 9)\]</span><p>Tenemos que la matriz de la derecha es nuestro kernel, la de la izquierda es una porción de la imagen, la operación seria invertir alguna de las dos matrices (normalmente suele ser el kernel). Arriba se hace un ejemplo rápido para las coordenadas <span>\([2, 2]\)</span></p><p>Generalmente podríamos hablar que en términos de sumatorias, la convolución se describe como:</p><span>\[\begin{bmatrix}
+x_{11} & x_{12} & \cdots & x_{1n}\\
+x_{21} & x_{22} & \cdots & x_{21}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n1} & x_{n3} & \cdots & x_{mn}\\
+\end{bmatrix}
+*
+\begin{bmatrix}
+y_{11} & y_{12} & \cdots & y_{1n}\\
+y_{21} & y_{22} & \cdots & y_{21}\\
+\vdots & \vdots & \ddots & \vdots\\
+y_{n1} & y_{n3} & \cdots & y_{mn}\\
+\end{bmatrix}
+=
+\sum_{i=0}^{m-1}\sum_{i=0}^{n-1}x_{(m-i)(n-j)} \cdot y_{(1-i)(1-j)}\]</span><h1 id=imagen-sin-aplicar-efecto>Imagen sin aplicar efecto
+<a class=anchor href=#imagen-sin-aplicar-efecto>#</a></h1><p>Esta es la imagen sin aplicar ningún efecto.</p><p><img src=/showcase/assets/3.jpg alt=IMAGEN></p><video width=320 height=240 controls>
+<source src=/showcase/assets/video.mp4 type=video/mp4></video><h2 id=image-processing>Image Processing
+<a class=anchor href=#image-processing>#</a></h2><iframe id=mask style=width:470px;height:310px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script src=/showcase/sketches/mask.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<iframe id=maskv style=width:470px;height:310px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script src=/showcase/sketches/maskv.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><h2 id=maskfrag>mask.frag
+<a class=anchor href=#maskfrag>#</a></h2><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>precision</span> <span style=color:#a6e22e>mediump</span> <span style=color:#66d9ef>float</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>uniform</span> <span style=color:#a6e22e>sampler2D</span> <span style=color:#a6e22e>texture</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e>// see the emitTexOffset() treegl macro
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// https://github.com/VisualComputing/p5.treegl#macros
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>uniform</span> <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>texOffset</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e>// holds the 3x3 kernel
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>uniform</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>mask</span>[<span style=color:#ae81ff>9</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// we need our interpolated tex coord
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>varying</span> <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>texcoords2</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 1. Use offset to move along texture space.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// In this case to find the texcoords of the texel neighbours.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(         <span style=color:#ae81ff>0.0</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>,          <span style=color:#ae81ff>0.0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// origin (current fragment texcoords)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc4</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(         <span style=color:#ae81ff>0.0</span>,          <span style=color:#ae81ff>0.0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc5</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>,          <span style=color:#ae81ff>0.0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc6</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc7</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(         <span style=color:#ae81ff>0.0</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vec2</span> <span style=color:#a6e22e>tc8</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>texcoords2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>vec2</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>s</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>texOffset</span>.<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 2. Sample texel neighbours within the rgba array
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>9</span>];
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>2</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc2</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>3</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc3</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>4</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc4</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>5</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc5</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc6</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>7</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc7</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rgba</span>[<span style=color:#ae81ff>8</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>texture2D</span>(<span style=color:#a6e22e>texture</span>, <span style=color:#a6e22e>tc8</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 3. Apply convolution kernel
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>convolution</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>9</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>convolution</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>rgba</span>[<span style=color:#a6e22e>i</span>]<span style=color:#f92672>*</span><span style=color:#a6e22e>mask</span>[<span style=color:#a6e22e>i</span>];
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// convolution[0] = convolution[0];
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// convolution[1] = convolution[1];
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// convolution[2] = convolution[2];
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// 4. Set color from convolution
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>vec4</span>(<span style=color:#a6e22e>convolution</span>.<span style=color:#a6e22e>rgb</span>, <span style=color:#ae81ff>1.0</span>); 
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></label></div><h2 id=imagejs>image.js
+<a class=anchor href=#imagejs>#</a></h2><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#e6db74>&#39;use strict&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>image_src</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>video_src</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>maskShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>video_on</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e>// ui
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// paintings are stored locally in the /sketches/shaders/paintings dir
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// and named sequentially as: p1.jpg, p2.jpg, ... p30.jpg
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// so we pick up one randomly just for fun:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>image_src</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>`/showcase/assets/3.jpg`</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>video_src</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVideo</span>([<span style=color:#e6db74>&#39;/showcase/assets/video.webm&#39;</span>],<span style=color:#a6e22e>onVideoLoad</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>hide</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//video_src.resize(450,280);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>maskShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/sketches/shaders/mask.frag&#39;</span>,
+</span></span><span style=display:flex><span>           { <span style=color:#a6e22e>matrices</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span>, <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>texcoords2</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>450</span>, <span style=color:#ae81ff>284</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>maskShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//video_src.size(400,300)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;texture&#34;</span>, <span style=color:#a6e22e>image_src</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;texOffset&#34;</span>, [<span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>image_src</span>.<span style=color:#a6e22e>width</span>, <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>image_src</span>.<span style=color:#a6e22e>height</span>])
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;mask&#34;</span>, [<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>]);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>size</span>(<span style=color:#ae81ff>450</span>,<span style=color:#ae81ff>280</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/*if (video_on.checked()) {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#39;texture&#39;, video_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#34;texOffset&#34;, [1 / video_src.width, 1 / video_src.height])
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        video_src.loop();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    } else {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#39;texture&#39;, image_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#34;texOffset&#34;, [1 / image_src.width, 1 / image_src.height])
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        video_src.pause();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    }
+</span></span></span><span style=display:flex><span><span style=color:#75715e>}
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  
+</span></span></span><span style=display:flex><span><span style=color:#75715e>function draw() {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    // which previous exercise does this code actually solve?
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    /*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>          y                  v
+</span></span></span><span style=display:flex><span><span style=color:#75715e>          |                  |
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    (-1,1)|     (1,1)        (0,1)     (1,1)
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    *_____|_____*            *__________*   
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |     |     |            |          |        
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |_____|_____|__x         | texture  |        
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |     |     |            |  space   |
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    *_____|_____*            *__________*___ u
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    (-1,-1)    (1,-1)       (0,0)    (1,0) 
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    */</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//maskShader.setUniform(&#34;texture&#34;, image_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//emitTexOffset(maskShader, image_src, [uniform = &#39;texOffset&#39;])
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [-1,-1,-1,-1,8,-1,-1,-1,-1]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1,1,1,1,1,1,1,1,1]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1/16,1/8,1/16,1/8,1/4,1/8,1/16,1/8,1/16]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1/9,1/9,1/9,1/9,1/9,1/9,1/9,1/9,1/9]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//video_src.loop();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//video_src.play();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>onVideoLoad</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// The media will play as soon as it is loaded.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>autoplay</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>volume</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>size</span>(<span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></label></div><h2 id=videojs>video.js
+<a class=anchor href=#videojs>#</a></h2><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#e6db74>&#39;use strict&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>image_src</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>video_src</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>maskShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>video_on</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e>// ui
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// paintings are stored locally in the /sketches/shaders/paintings dir
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// and named sequentially as: p1.jpg, p2.jpg, ... p30.jpg
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// so we pick up one randomly just for fun:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>image_src</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>`/showcase/assets/3.jpg`</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>video_src</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVideo</span>(<span style=color:#e6db74>&#39;/showcase/assets/video.webm&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>hide</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//video_src.resize(450,280);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>maskShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/sketches/shaders/mask.frag&#39;</span>,
+</span></span><span style=display:flex><span>           { <span style=color:#a6e22e>matrices</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span>, <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>texcoords2</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>450</span>, <span style=color:#ae81ff>284</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>maskShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//video_src.size(400,300)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;texture&#34;</span>, <span style=color:#a6e22e>video_src</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;texOffset&#34;</span>, [<span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>width</span>, <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>height</span>])
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>maskShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#34;mask&#34;</span>, [<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span><span style=color:#ae81ff>9</span>]);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>size</span>(<span style=color:#ae81ff>450</span>,<span style=color:#ae81ff>280</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/*if (video_on.checked()) {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#39;texture&#39;, video_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#34;texOffset&#34;, [1 / video_src.width, 1 / video_src.height])
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        video_src.loop();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    } else {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#39;texture&#39;, image_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        maskShader.setUniform(&#34;texOffset&#34;, [1 / image_src.width, 1 / image_src.height])
+</span></span></span><span style=display:flex><span><span style=color:#75715e>        video_src.pause();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    }
+</span></span></span><span style=display:flex><span><span style=color:#75715e>}
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  
+</span></span></span><span style=display:flex><span><span style=color:#75715e>function draw() {
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    // which previous exercise does this code actually solve?
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    /*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>          y                  v
+</span></span></span><span style=display:flex><span><span style=color:#75715e>          |                  |
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    (-1,1)|     (1,1)        (0,1)     (1,1)
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    *_____|_____*            *__________*   
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |     |     |            |          |        
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |_____|_____|__x         | texture  |        
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    |     |     |            |  space   |
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    *_____|_____*            *__________*___ u
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    (-1,-1)    (1,-1)       (0,0)    (1,0) 
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    */</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//maskShader.setUniform(&#34;texture&#34;, image_src);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//emitTexOffset(maskShader, image_src, [uniform = &#39;texOffset&#39;])
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [-1,-1,-1,-1,8,-1,-1,-1,-1]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1,1,1,1,1,1,1,1,1]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1/16,1/8,1/16,1/8,1/4,1/8,1/16,1/8,1/16]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//maskShader.setUniform(&#34;mask&#34;, [1/9,1/9,1/9,1/9,1/9,1/9,1/9,1/9,1/9]);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>video_src</span>.<span style=color:#a6e22e>loop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//video_src.play();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>();
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></label></div><h2 id=conclusiones>Conclusiones
+<a class=anchor href=#conclusiones>#</a></h2><ul><li><p>La aplicacion de máscaras mediante el uso de shaders es notablemente más rapido gracias al uso de la tarjeta gráfica del computador. Esto se puede hacer tangible no solo en la velocidad del proceso, sino que tambien en el hecho de que podemos implementar el mismo shader para imagenes en video y poder realizar el proceso en tiempo real en lugar de tener que esperar aproximadamente 20 segundos +/- 1, a poder realizarlo varias veces por segundo.</p></li><li><p>La cantidad de código escrito por nosotros es menor y mas eficiente gracias a las librerias y los shaders que se usaron</p></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/be35c3242f287edfc19fa9c199820f04bd41728e title='Last modified by sladinor1 | November 28, 2022' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>November 28, 2022</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#que-es-el-masking>Que es el Masking?</a><ul><li><a href=#qué-es-una-máscara-de-convolución>¿Qué es una máscara de convolución?</a></li></ul></li></ul></li><li><a href=#imagen-sin-aplicar-efecto>Imagen sin aplicar efecto</a><ul><li><a href=#image-processing>Image Processing</a></li><li><a href=#maskfrag>mask.frag</a></li><li><a href=#imagejs>image.js</a></li><li><a href=#videojs>video.js</a></li><li><a href=#conclusiones>Conclusiones</a></li></ul></li></ul></nav></div></aside></main></body></html>
