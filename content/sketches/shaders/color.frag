@@ -4,7 +4,8 @@ precision mediump float;
 // https://p5js.org/reference/#/p5.Shader/setUniform
 uniform vec4 uMaterial1;
 uniform vec4 uMaterial2;
+uniform float b;
 
 void main() {
-  gl_FragColor = uMaterial1 * uMaterial2;
+  gl_FragColor = (uMaterial1 * uMaterial2) * b ;
 }
