@@ -26,7 +26,7 @@ function setup() {
     //video_src.size(400,300)
     maskShader.setUniform("texture", image_src);
     maskShader.setUniform("texOffset", [1 / image_src.width, 1 / image_src.height])
-    maskShader.setUniform("mask", [-1,-1,-1,-1,8,-1,-1,-1,-1]);
+    maskShader.setUniform("mask", [-1,0,1,-2,0,2,-1,0,1]);
     video_src.size(450,280);
     /*if (video_on.checked()) {
         maskShader.setUniform('texture', video_src);
