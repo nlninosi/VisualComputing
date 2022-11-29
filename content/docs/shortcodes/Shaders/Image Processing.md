@@ -65,6 +65,8 @@ Esta es la imagen sin aplicar ningún efecto.
 
 {{< p5-iframe sketch="/showcase/sketches/mask.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="470" height="310" >}}
 
+{{< p5-iframe sketch="/showcase/sketches/mask2.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="470" height="310" >}}
+
 {{< p5-iframe sketch="/showcase/sketches/maskv.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="470" height="310" >}}
 
 ## mask.frag
