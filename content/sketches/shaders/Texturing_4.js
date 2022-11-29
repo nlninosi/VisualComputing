@@ -16,7 +16,6 @@ function setup() {
     sel.option('Original');
     sel.option('HSL');
     sel.option('HSV');
-    sel.option('Average');
     sel.changed(mySelectEvent);
     textureMode(NORMAL);
 }
@@ -25,9 +24,6 @@ function mySelectEvent() {
     mode = sel.value();
     if(mode === 'Original'){
         reset();
-    }
-    if(mode === 'Average'){
-        average();
     }
     if(mode === 'HSL'){
         HSLL();
@@ -45,7 +41,6 @@ function draw() {
     lumaShader.setUniform('greyscale',false);
     lumaShader.setUniform('val',false);
     lumaShader.setUniform('lum',false);
-    lumaShader.setUniform('avg',false);
     lumaShader.setUniform('texture',baseimg);
     quad(-250,-250,250,-250,250,250,-250,250);
     loadPixels();
@@ -61,7 +56,6 @@ function reset(){
     lumaShader.setUniform('greyscale',false);
     lumaShader.setUniform('val',false);
     lumaShader.setUniform('lum',false);
-    lumaShader.setUniform('avg',false);
     lumaShader.setUniform('texture',baseimg);
     quad(-250,-250,250,-250,250,250,-250,250);
     loadPixels();
@@ -71,7 +65,6 @@ function HSVV(){
     lumaShader.setUniform('greyscale',true);
     lumaShader.setUniform('val',true);
     lumaShader.setUniform('lum',false);
-    lumaShader.setUniform('avg',false);
     lumaShader.setUniform('texture',baseimg);
     quad(-250,-250,250,-250,250,250,-250,250);
     loadPixels();
@@ -80,17 +73,6 @@ function HSVV(){
 function HSLL(){
     lumaShader.setUniform('greyscale',true);
     lumaShader.setUniform('lum',true);
-    lumaShader.setUniform('avg',false);
-    lumaShader.setUniform('val',false);
-    lumaShader.setUniform('texture',baseimg);
-    quad(-250,-250,250,-250,250,250,-250,250);
-    loadPixels();
-}
-
-function average(){
-    lumaShader.setUniform('greyscale',true);
-    lumaShader.setUniform('avg',true);
-    lumaShader.setUniform('lum',false);
     lumaShader.setUniform('val',false);
     lumaShader.setUniform('texture',baseimg);
     quad(-250,-250,250,-250,250,250,-250,250);
