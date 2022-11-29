@@ -8,4 +8,5 @@ headless: true
 - [Histogram]({{< relref "/docs/shortcodes/Histogram" >}})
 - [3D]({{< relref "/docs/shortcodes/3D" >}})
 - [Flower3D]({{< relref "/docs/shortcodes/Flower3d" >}})
+- [Shaders]({{< relref "/docs/shortcodes/Shaders/" >}})
 <br />
