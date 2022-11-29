@@ -1,0 +1,161 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Procedural Texturing # El objetivo de la texturización procesal es generar una textura mediante un algoritmo de tal manera que el resultado se pueda asignar a una forma como textura. La textura de procedimiento requiere el uso de un objeto de búfer de cuadro que en p5.js se implementa como un objeto p5.Graphics.
+Offset patterns: # Un ejemplo de un patron compensado (offset patterns) es un muro de ladrillos, donde por cada fila alterna tenemos un ladrillo desplazado en el eje x."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Procedural Texturing # El objetivo de la texturización procesal es generar una textura mediante un algoritmo de tal manera que el resultado se pueda asignar a una forma como textura. La textura de procedimiento requiere el uso de un objeto de búfer de cuadro que en p5.js se implementa como un objeto p5.Graphics.
+Offset patterns: # Un ejemplo de un patron compensado (offset patterns) es un muro de ladrillos, donde por cada fila alterna tenemos un ladrillo desplazado en el eje x."><meta property="og:type" content="article"><meta property="og:url" content="https://nlninosi.github.io/showcase/docs/shortcodes/Shaders/procedural_texturing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-11-28T23:15:03-05:00"><title>Procedural Texturing | Presentación</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+<script defer src=/showcase/en.search.min.f88753a6357ab66210042fb309e1c9fd2609e2c58d699edfee787dd12f00ea79.js integrity="sha256-+IdTpjV6tmIQBC+zCeHJ/SYJ4sWNaZ7f7nh90S8A6nk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Presentación</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>Shortcodes</span><ul><li><a href=/showcase/docs/shortcodes/3D/>3 D</a></li><li><a href=/showcase/docs/shortcodes/Flower3d/>Flower3d</a></li><li><a href=/showcase/docs/shortcodes/Histogram/>Histogram</a></li><li><a href=/showcase/docs/shortcodes/illusions/>Illusions</a></li><li><a href=/showcase/docs/shortcodes/Masking/>Masking</a></li><li><input type=checkbox id=section-37d133451a87125afc7e4d4a60cdb12b class=toggle checked>
+<label for=section-37d133451a87125afc7e4d4a60cdb12b class="flex justify-between"><a href=/showcase/docs/shortcodes/Shaders/>Shaders</a></label><ul><li><a href=/showcase/docs/shortcodes/Shaders/coloring/>Coloring</a></li><li><a href=/showcase/docs/shortcodes/Shaders/Image-Processing/>Image Processing</a></li><li><a href=/showcase/docs/shortcodes/Shaders/procedural_texturing/ class=active>Procedural Texturing</a></li><li><a href=/showcase/docs/shortcodes/Shaders/SpatialCoherence/>Spatial Coherence</a></li><li><a href=/showcase/docs/shortcodes/Shaders/Texturing/>Texturing</a></li></ul></li></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Procedural Texturing</strong>
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#procedural-texturing>Procedural Texturing</a><ul><li><a href=#offset-patterns>Offset patterns:</a><ul><li><a href=#implementación><strong>Implementación</strong></a></li></ul></li></ul></li><li><a href=#codigo>Codigo</a><ul><li><ul><li><a href=#segundo-ejemplo>Segundo ejemplo:</a></li></ul></li></ul></li><li><a href=#codigo-1>Codigo</a><ul><li><ul><li><a href=#conclusiones><strong>Conclusiones:</strong></a></li></ul></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=procedural-texturing>Procedural Texturing
+<a class=anchor href=#procedural-texturing>#</a></h1><p>El objetivo de la texturización procesal es generar una textura mediante un algoritmo de tal manera que el resultado se pueda asignar a una forma como textura. La textura de procedimiento requiere el uso de un objeto de búfer de cuadro que en p5.js se implementa como un objeto p5.Graphics.</p><h2 id=offset-patterns>Offset patterns:
+<a class=anchor href=#offset-patterns>#</a></h2><p>Un ejemplo de un patron compensado (offset patterns) es un muro de ladrillos, donde por cada fila alterna tenemos un ladrillo desplazado en el eje x.</p><p>Para simular esto lo que hacemos es saber en que fila desplazamos el ladrillo, esto lo logramos verificando si estamos en una fila par o una fila impar con la función mod() of 2.0: y = mod(x,2.0).</p><p>oprima cualquier tecla para reiniciar:</p><iframe id=sketch style=width:440px;height:440px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/objetos/p5.quadrille.js/p5.quadrille.js></script> 
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            <script src=/showcase/sketches/procedural1/sketch.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><h3 id=implementación><strong>Implementación</strong>
+<a class=anchor href=#implementaci%c3%b3n>#</a></h3><p>Le damos a cada celda un numero indice:</p><pre><code>//      |
+//  2   |   3
+//      |
+//--------------
+//      |
+//  0   |   1
+//      |
+</code></pre><p>Aplicamos el color intercalado, sea en indices pares o en indices impares. y luego rotamos o asignamos celdas
+segun queramos.</p><p>En la línea 15 del código del fragment es donde estamos usando la función para &ldquo;detectar&rdquo; filas impares y darles un desplazamiento de media unidad en x.</p><p>En la línea 33 se amplía la relación de aspecto del sistema de coordenadas para imitar el aspecto de un &ldquo;ladrillo moderno&rdquo;.</p><h1 id=codigo>Codigo
+<a class=anchor href=#codigo>#</a></h1><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>pg</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>truchetShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>frames</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>frames2</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// shader adapted from here: https://thebookofshaders.com/09/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>truchetShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/sketches/procedural1/truchet.frag&#39;</span>, { <span style=color:#a6e22e>matrices</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span>, <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// create frame buffer object to render the procedural texture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// use truchetShader to render onto pg
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>truchetShader</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// emitResolution, see:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// https://github.com/VisualComputing/p5.treegl#macros
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>emitResolution</span>(<span style=color:#a6e22e>truchetShader</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// https://p5js.org/reference/#/p5.Shader/setUniform
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>truchetShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;u_zoom&#39;</span>, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// pg clip-space quad (i.e., both x and y vertex coordinates ∈ [-1..1])
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>quad</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// set pg as texture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>pg</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>33</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>orbitControl</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>truchetShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;u_zoom&#39;</span>, <span style=color:#66d9ef>int</span>(<span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>frames2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>30</span>)));
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>quad</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>frames2</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.5</span>;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>box</span>(<span style=color:#ae81ff>150</span>,<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>keyPressed</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>key</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frames2</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></label></div><h3 id=segundo-ejemplo>Segundo ejemplo:
+<a class=anchor href=#segundo-ejemplo>#</a></h3><h1 id=codigo-1>Codigo
+<a class=anchor href=#codigo-1>#</a></h1><p><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>pg</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>truchetShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>frames</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>frames2</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// shader adapted from here: https://thebookofshaders.com/09/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>truchetShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/sketches/procedural2/truchet.frag&#39;</span>, { <span style=color:#a6e22e>matrices</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span>, <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// create frame buffer object to render the procedural texture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// use truchetShader to render onto pg
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>truchetShader</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// emitResolution, see:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// https://github.com/VisualComputing/p5.treegl#macros
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>emitResolution</span>(<span style=color:#a6e22e>truchetShader</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// https://p5js.org/reference/#/p5.Shader/setUniform
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>truchetShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;u_zoom&#39;</span>, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// pg clip-space quad (i.e., both x and y vertex coordinates ∈ [-1..1])
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>quad</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// set pg as texture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>pg</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>33</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>orbitControl</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>frames</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.005</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>truchetShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;u_zoom&#39;</span>, <span style=color:#66d9ef>int</span>(<span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>frames2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>30</span>)));
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>quad</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>frames2</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.5</span>;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sphere</span>(<span style=color:#ae81ff>150</span>,<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>keyPressed</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>key</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frames2</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></label></div><iframe id=sketch style=width:440px;height:440px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/objetos/p5.quadrille.js/p5.quadrille.js></script> 
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            <script src=/showcase/sketches/procedural2/sketch.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe></p><h3 id=conclusiones><strong>Conclusiones:</strong>
+<a class=anchor href=#conclusiones>#</a></h3><ul><li><p>Como podemos ver en la animación cuando pasa el tiempo la textura pasa a ser mas detallada ya que las celdas son cada vez mas pequeñas, sin embargo sigue siendo fluida debido a que Procedural Texturing requiere poca memoria, no hay ninguna memoria que almacenar en la RAM o en la memoria de la GPU.</p></li><li><p>Las texturas sirven en cualquier escala.</p></li><li><p>Se puede crear una gran variedad de patrones con pequeños cambios o retoques en sus calculos.</p></li><li><p>El mapeo de las texturas se calcula en tiempo real para cada fragmento individual, si los calculos son complejos la velocidad del renderizado se vuelve mas lenta.</p></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/35b2fdf1a2df981edd149d91331419e5e765e491 title='Last modified by Camilo Colmenares | November 29, 2022' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>November 29, 2022</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#procedural-texturing>Procedural Texturing</a><ul><li><a href=#offset-patterns>Offset patterns:</a><ul><li><a href=#implementación><strong>Implementación</strong></a></li></ul></li></ul></li><li><a href=#codigo>Codigo</a><ul><li><ul><li><a href=#segundo-ejemplo>Segundo ejemplo:</a></li></ul></li></ul></li><li><a href=#codigo-1>Codigo</a><ul><li><ul><li><a href=#conclusiones><strong>Conclusiones:</strong></a></li></ul></li></ul></li></ul></nav></div></aside></main></body></html>
