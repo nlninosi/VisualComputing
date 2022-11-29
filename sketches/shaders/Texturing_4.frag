@@ -2,7 +2,6 @@ precision mediump float;
 
 // uniforms are defined and sent by the sketch
 uniform sampler2D texture;
-uniform bool avg;
 uniform bool lum;
 uniform bool val;
 uniform bool greyscale;
@@ -12,9 +11,6 @@ varying vec2 texcoords2;
 
 // returns luma of given texel
 float luma(vec3 texel) {
-  if(avg){
-    return 0.3333 * texel.r + 0.3333 * texel.g + 0.3333 * texel.b + 0.1;
-  }
   if(lum){
     float max = 0.0;
     float min = 0.0;

@@ -17,10 +17,9 @@ function preload() {
   // and named sequentially as: p1.jpg, p2.jpg, ... p30.jpg
   // so we pick up one randomly just for fun:
   images_src = [];
-  for (let i = 1; i <= 5; i++) {
-    images_src.push(loadImage(`/showcase/assets/Photomosaic/${i}.png`));
+  for (let i = 1; i <= 10; i++) {
+    images_src.push(loadImage(`/showcase/assets/Photomosaic/${i}.jpg`));
   }
-  image_src = loadImage(`/showcase/assets/3.jpg`);
   mosaic = readShader('/showcase/sketches/shaders/SpatialCoherence2.frag',
            { matrices: Tree.NONE, varyings: Tree.texcoords2 });
 }
